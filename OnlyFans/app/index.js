@@ -1,12 +1,27 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
+import users from '../assets/data/users';
+
+const user = users[0];
 
 export default function Page() {
   return (
     <View style={styles.container}>
-      <View style={styles.main}>
-        <Text style={styles.title}>Hello World</Text>
-        <Text style={styles.subtitle}>This is the first page of your app.</Text>
-      </View>
+      <ImageBackground
+        source={{ uri: user.coverImage }}
+        resizeMode="cover"
+        style={styles.userCard}>
+        <View style={styles.overlay} />
+        {/* Image */}
+        <Image
+          src={user.avatar}
+          style={styles.userImage}
+        />
+        {/* Name & Handle */}
+        <View>
+          <Text style={{ color: "white", fontWeight: "500", fontSize: 22, marginBottom: 5 }}>{user.name}</Text>
+          <Text style={{color: "white", fontWeight: "500", fontSize: 18}}>@{user.handle}</Text>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -14,22 +29,29 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    padding: 24,
+    padding: 10,
+    paddingTop: 75,
+    // backgroundColor: "#FF6C00",
   },
-  main: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
+  userCard: {
+    padding: 10,
+    backgroundColor: "#E3655B",
+    flexDirection: "row",
+    alignItems: "flex-end",
+    borderRadius: 10,
+    overflow: "hidden",
   },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
+  overlay: {
+    backgroundColor: "rgba(0,0,0,0.3)",
+    ...StyleSheet.absoluteFillObject,
   },
-  subtitle: {
-    fontSize: 36,
-    color: "#38434D",
+
+  userImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+    borderColor: "white",
+    borderWidth: 3,
+    marginRight: 20,
   },
 });
