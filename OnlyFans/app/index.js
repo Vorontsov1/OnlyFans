@@ -1,4 +1,4 @@
-import { StyleSheet, View, FlatList, SafeAreaView } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import users from '../assets/data/users';
 import  UserCard  from '../src/components/UserCard';
 
@@ -6,13 +6,13 @@ import  UserCard  from '../src/components/UserCard';
 
 export default function Page() {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={users}
         renderItem={({ item }) => <UserCard user={item} />}
         showsVerticalScrollIndicator={false}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 

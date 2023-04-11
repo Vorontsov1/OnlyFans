@@ -1,7 +1,8 @@
 import { useRouter, useSearchParams } from 'expo-router';
-import React from 'react';
-import { View, Text } from 'react-native';
-import users  from '../../assets/data/users';
+import { View, Text, ImageBackground, StyleSheet, SafeAreaView } from 'react-native';
+import users from '../../assets/data/users';
+import { Entypo } from "@expo/vector-icons";
+
 
 const ProfilePage = () => {
   const router = useRouter();
@@ -12,11 +13,33 @@ const ProfilePage = () => {
   };
 
   return (
-    <View style={{ marginTop: 100 }}>
+    <View style={styles.overlay}>
+      <ImageBackground source={{ uri: user.coverImage }} style={styles.cover}>
+        <SafeAreaView style={{ marginHorizontal: 20}}>
+          <Entypo
+            onPress={() => router.back()}
+            name="back"
+            size={24}
+            style={{ marginTop: 10 }}
+            color="white" />
+        </SafeAreaView>
+      </ImageBackground>
       <Text>ProfilePage{user.name}</Text>
-      <Text onPress={() => router.back()} style={{ marginTop: 10 }}>Go back</Text>
     </View>
   );
 }
 
+
+const styles = StyleSheet.create({
+  cover: {
+    height: 200,
+    width: "100%",
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0,0,0,0.2)",
+  },
+});
+
 export default ProfilePage;
+
