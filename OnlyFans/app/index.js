@@ -1,4 +1,4 @@
-import { StyleSheet, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList, SafeAreaView } from "react-native";
 import users from '../assets/data/users';
 import  UserCard  from '../src/components/UserCard';
 
