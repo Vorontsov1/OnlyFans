@@ -5,7 +5,7 @@ import { Link } from 'expo-router';
 
 export default function UserCard({ user }) {
   return (
-    <Link href={"/user"} asChild>
+    <Link href={`/user/${user.id}`} asChild>
       <Pressable>
         <ImageBackground
           source={{ uri: user.coverImage }}

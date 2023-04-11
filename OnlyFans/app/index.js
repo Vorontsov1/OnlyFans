@@ -6,13 +6,13 @@ import  UserCard  from '../src/components/UserCard';
 
 export default function Page() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={users}
         renderItem={({ item }) => <UserCard user={item} />}
         showsVerticalScrollIndicator={false}
-      /> 
-    </View>
+      />
+    </SafeAreaView>
   );
 }
 
