@@ -1,7 +1,12 @@
 import { useRouter, useSearchParams } from 'expo-router';
-import { View, Text, ImageBackground, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, SafeAreaView, Image } from 'react-native';
 import users from '../../assets/data/users';
-import { Entypo } from "@expo/vector-icons";
+import {
+  Entypo,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+
 
 
 const ProfilePage = () => {
@@ -15,11 +20,13 @@ const ProfilePage = () => {
   return (
     <View style={styles.overlay}>
       <ImageBackground source={{ uri: user.coverImage }} style={styles.cover}>
-        <SafeAreaView style={{
-          marginHorizontal: 20,
-          flexDirection: "row",
-          alignItems: "center",
-        }}>
+        <SafeAreaView
+          style={{
+            marginHorizontal: 20,
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
           <Entypo
             onPress={() => router.back()}
             name="back"
@@ -53,7 +60,32 @@ const ProfilePage = () => {
           </View>
         </SafeAreaView>
       </ImageBackground>
-      <Text>ProfilePage{user.name}</Text>
+      <View style={{ padding: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+            marginTop: -50,
+          }}
+        >
+          <Image src={user.avatar} style={styles.userImage} />
+          <MaterialCommunityIcons
+            name="message-text"
+            size={24}
+            color="#0496FF"
+          />
+          <FontAwesome name="star-o" size={24} color="#0496FF" />
+          <FontAwesome name="share-square-o" size={24} color="#0496FF" />
+        </View>
+        <Text style={{ fontWeight: "600", fontSize: 20, marginVertical: 5 }}>
+          {user.name}
+        </Text>
+        <Text style={{ marginBottom: 20, color: "gray", fontWeight: "500" }}>
+          @{user.handle}
+        </Text>
+        <Text style={{ lineHeight: 20 }}>{user.bio}</Text>
+      </View>
     </View>
   );
 }
@@ -66,7 +98,14 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0,0,0,0.3)",
+  },
+  userImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+    borderColor: "white",
+    borderWidth: 3,
+    marginRight: 20,
   },
 });
 
