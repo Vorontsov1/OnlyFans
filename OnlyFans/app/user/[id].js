@@ -1,5 +1,5 @@
 import { useRouter, useSearchParams } from 'expo-router';
-import { View, Text, ImageBackground, StyleSheet, SafeAreaView, Image } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, SafeAreaView, Image, Pressable } from 'react-native';
 import users from '../../assets/data/users';
 import {
   Entypo,
@@ -85,6 +85,22 @@ const ProfilePage = () => {
           @{user.handle}
         </Text>
         <Text style={{ lineHeight: 20 }}>{user.bio}</Text>
+        <Text
+          style={{
+            fontWeight: "bold",
+            color: "gray",
+            fontSize: 16,
+            marginTop: 20,
+          }}
+        >
+          SUBSCRIPTION
+        </Text>
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>SUBSCRIBED</Text>
+          <Text style={styles.buttonText}>{user.subscriptionPrice === 0 ?
+            "FOR FREE" :
+            `$${user.subscriptionPrice}/month`}</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -106,6 +122,22 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderWidth: 3,
     marginRight: 20,
+  },
+  buttonText: {
+    color: "#0496FF",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  button: {
+    flexDirection: "row",
+    borderWidth: 1,
+    padding: 15,
+    borderRadius: 50,
+    paddingHorizontal: 20,
+    borderColor: "gainsboro",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginVertical: 10,
   },
 });
 
