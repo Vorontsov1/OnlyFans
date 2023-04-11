@@ -15,13 +15,42 @@ const ProfilePage = () => {
   return (
     <View style={styles.overlay}>
       <ImageBackground source={{ uri: user.coverImage }} style={styles.cover}>
-        <SafeAreaView style={{ marginHorizontal: 20}}>
+        <SafeAreaView style={{
+          marginHorizontal: 20,
+          flexDirection: "row",
+          alignItems: "center",
+        }}>
           <Entypo
             onPress={() => router.back()}
             name="back"
             size={24}
             style={{ marginTop: 10 }}
-            color="white" />
+            color="white"
+          />
+          <View>
+            <Text
+              style={{
+                fontSize: 20,
+                color: "white",
+                marginTop: 10,
+                marginBottom: 5,
+                marginLeft: 10,
+                fontWeight: "500",
+              }}
+            >
+              {user.name}
+            </Text>
+            <Text
+              style={{
+                fontSize: 20,
+                color: "white",
+                marginLeft: 10,
+                fontWeight: "500",
+              }}
+            >
+              1.4k Posts · 304.8K Likes · 1.34M Fans
+            </Text>
+          </View>
         </SafeAreaView>
       </ImageBackground>
       <Text>ProfilePage{user.name}</Text>
@@ -37,7 +66,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0,0,0,0.2)",
+    backgroundColor: "rgba(0,0,0,0.3)",
   },
 });
 
