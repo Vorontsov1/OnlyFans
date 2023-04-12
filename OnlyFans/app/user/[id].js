@@ -2,7 +2,7 @@ import { useRouter, useSearchParams } from 'expo-router';
 import { View, Text, ImageBackground, StyleSheet, SafeAreaView, Image, Pressable } from 'react-native';
 import users from '../../assets/data/users';
 import {
-  Entypo,
+  Ionicons,
   FontAwesome,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
@@ -30,10 +30,10 @@ const [subScribed, setSubScribed] = useState(false);
             alignItems: "center",
           }}
         >
-          <Entypo
+          <Ionicons
             onPress={() => router.back()}
-            name="back"
-            size={24}
+           name="arrow-back-circle-sharp" 
+            size={34}
             style={{ marginTop: 10 }}
             color="white"
           />
