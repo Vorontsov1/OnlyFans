@@ -6,10 +6,13 @@ import {
   FontAwesome,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { useState } from 'react';
 
 
 
 const ProfilePage = () => {
+const [subScribed, setSubScribed] = useState(false); 
+
   const router = useRouter();
   const { id } = useSearchParams();
   const user = users.find((u) => u.id === id);
@@ -95,11 +98,31 @@ const ProfilePage = () => {
         >
           SUBSCRIPTION
         </Text>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>SUBSCRIBED</Text>
-          <Text style={styles.buttonText}>{user.subscriptionPrice === 0 ?
-            "FOR FREE" :
-            `$${user.subscriptionPrice}/month`}</Text>
+        <Pressable
+          onPress={() => setSubScribed(!subScribed)}
+          style={[
+            styles.button,
+            { backgroundColor: subScribed ? "white" : "#0496FF" },
+          ]}
+        >
+          <Text
+            style={[
+              styles.buttonText,
+              { color: subScribed ? "#0496FF" : "white" },
+            ]}
+          >
+            {subScribed ? "SUBSCRIBED" : "SUBSCRIBE"}
+          </Text>
+          <Text
+            style={[
+              styles.buttonText,
+              { color: subScribed ? "#0496FF" : "white" },
+            ]}
+          >
+            {user.subscriptionPrice === 0
+              ? "FOR FREE"
+              : `$${user.subscriptionPrice} / month`}
+          </Text>
         </Pressable>
       </View>
     </View>
