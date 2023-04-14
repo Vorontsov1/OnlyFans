@@ -17,7 +17,6 @@ const [subScribed, setSubScribed] = useState(false);
   };
 
   return (
-    <View>
       <FlatList
         data={posts}
         renderItem={({ item }) => <Post post={item} />}
@@ -29,12 +28,10 @@ const [subScribed, setSubScribed] = useState(false);
           />
         )}
       />
-    </View>
   );
 }
 
 
 const styles = StyleSheet.create({});
-
 export default ProfilePage;
 
