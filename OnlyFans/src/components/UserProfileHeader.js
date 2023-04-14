@@ -20,7 +20,7 @@ const UserProfileHeader = ({ user, subScribed, setSubScribed }) => {
   const router = useRouter();
 
   return (
-    <View style={styles.overlay}>
+    <View>
       <ImageBackground source={{ uri: user.coverImage }} style={styles.cover}>
         <SafeAreaView
           style={{
