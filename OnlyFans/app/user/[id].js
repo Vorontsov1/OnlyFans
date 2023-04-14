@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from 'expo-router';
+import { useSearchParams } from 'expo-router';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import users from '../../assets/data/users';
 import { useState } from 'react';
